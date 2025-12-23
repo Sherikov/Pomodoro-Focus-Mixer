@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Flow | Pomodoro Mixer</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="timer-section">
+            <div class="mode-switcher">
+                <button class="mode-btn active" data-time="25">Focus</button>
+                <button class="mode-btn" data-time="5">Short</button>
+                <button class="mode-btn" data-time="15">Long</button>
+            </div>
+
+            <div class="timer-circle">
+                <svg>
+                    <circle class="circle-bg" cx="140" cy="140" r="130"></circle>
+                    <circle class="circle-progress" id="progress-ring" cx="140" cy="140" r="130"></circle>
+                </svg>
+                <div class="timer-text" id="time-display">25:00</div>
+            </div>
+
+            <div class="controls">
+                <button class="btn-control btn-sec" id="reset-btn" title="Reset">↻</button>
+                <button class="btn-control btn-main" id="toggle-btn" title="Start/Pause">▶</button>
+            </div>
+        </div>
+
+        <div class="mixer-section">
+            <div class="section-title">Soundscapes</div>
+            <div class="sounds-grid" id="sounds-grid">
+                </div>
+        </div>
+
+    </div>
+
+    <script src="./JS/script.js"></script>
+</body>
+</html>
