@@ -6,7 +6,7 @@ A modern productivity tool that combines a customizable **Pomodoro Timer** with 
 ![Project Preview](screenshot.png)
 
 
-[![Live Preview](https://img.shields.io/badge/Live-Preview-brightgreen?style=for-the-badge&logo=html5)](https://YOUR-USERNAME.github.io/pomodoro-mixer/)
+[![Live Preview](https://img.shields.io/badge/Live-Preview-brightgreen?style=for-the-badge&logo=html5)](https://sherikov.github.io/Pomodoro-Focus-Mixer/)
 
 ## ✨ Features
 
