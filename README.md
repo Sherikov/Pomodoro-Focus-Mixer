@@ -3,7 +3,7 @@
 
 A modern productivity tool that combines a customizable **Pomodoro Timer** with an ambient **Sound Mixer**. Designed to help you enter a state of deep flow by masking distracting noises with calming soundscapes like Rain, Forest, or Cafe ambiance.
 
-![Project Preview](preview.png)
+![Project Preview](screenshot.png)
 
 
 [![Live Preview](https://img.shields.io/badge/Live-Preview-brightgreen?style=for-the-badge&logo=html5)](https://YOUR-USERNAME.github.io/pomodoro-mixer/)
