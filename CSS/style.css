@@ -1,199 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* --- Variables & Reset --- */
 :root {
-    --bg-gradient: linear-gradient(135deg, #1a1c2c 0%, #4a192c 100%);
-    --glass-bg: rgba(255, 255, 255, 0.08);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --accent: #ff6b6b; /* Tomato color */
-    --accent-glow: rgba(255, 107, 107, 0.4);
-    --text-primary: #fff;
-    --text-secondary: #a0a0a0;
-    --card-active: rgba(255, 107, 107, 0.15);
+    --bg-gradient-rain: linear-gradient(#4a5863, #36434c);
+    --bg-main: #F6F3EB;
+    --bg-second: #ede6d8;
+    --bg-fire: linear-gradient(#FDF4E7, #FBEAD2);
+
+    --card-main: rgba(239, 231, 216, 0.4);
+    --card-border: 1px solid rgba(215, 204, 186, 0.5);
+    --card-input: #F4EFE6;
+
+    --terakota: #C86237;
+    --terakota-hover: #B4532B;
+    --leaf: #4f6e47;
+    --rain: #4b6e82;
+    --fire: #e06d28;
+
+    --text-color: #2c2621;
+    --text-second-color: #7a7165;
+
+    --font-main: Newsreader;
+    --font-timer: Inter serif;
+
+    --border-radius-container: 36px;
+    --border-radius-sound: 18px;
+    --bt-mode: 9999px;
+
+    --shadow-main: 0 10px 30px -5px rgba(80, 60, 40, 0.06), 0 2px 6px rgba(80, 60, 40, 0.03);
+    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main), sans-serif;
+}
 
 body {
-    background: var(--bg-gradient);
-    color: var(--text-primary);
-    min-height: 100vh;
+    background-color: var(--bg-second);
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-
-/* --- Main Layout --- */
-.app-container {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 40px;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    max-width: 950px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    min-height: 100vh;
 }
 
-/* --- Left Side: Timer --- */
+/* ---- Header ---- */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+
+    h1 {
+        font-size: 36px;
+        font-weight: 400;
+        letter-spacing: 0.75;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--text-second-color);
+    }
+}
+
+/*---- Container -----  */
+.app-container {
+    width: 976px;
+    height: 829px;
+    background-color: var(--bg-main);
+    padding: 36px;
+    border-radius: var(--border-radius-container);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ---- Main section ----*/
+.main-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-top: 8px;
+}
+
+/* ----- Timer section -----*/
 .timer-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: relative;
 }
 
-/* Tabs */
-.mode-switcher {
+.btn-timer-mode {
+    background-color: var(--bg-second);
+    border-radius: var(--bt-mode);
     display: flex;
-    background: rgba(0,0,0,0.3);
-    padding: 5px;
-    border-radius: 50px;
-    margin-bottom: 30px;
+    width: 90%;
+    padding: 4px;
 }
 
-.mode-btn {
-    background: none; border: none; color: var(--text-secondary);
-    padding: 10px 20px; cursor: pointer; border-radius: 40px;
-    font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;
+.btn-timer {
+    width: 110px;
+    height: 44px;
+    font-size: 16px;
+    color: rgba(116, 103, 87, 1);
+    border: none;
+    background-color: inherit;
+    border-radius: var(--bt-mode);
 }
 
-.mode-btn.active { background: var(--text-primary); color: #1a1c2c; }
-
-/* SVG Circular Timer */
-.timer-circle {
-    position: relative;
-    width: 280px;
-    height: 280px;
-    margin-bottom: 30px;
-}
-
-svg {
-    transform: rotate(-90deg);
-    width: 100%;
-    height: 100%;
-}
-
-circle {
-    fill: none;
-    stroke-width: 8;
-    stroke-linecap: round;
-}
-
-.circle-bg { stroke: rgba(255,255,255,0.1); }
-
-.circle-progress {
-    stroke: var(--accent);
-    stroke-dasharray: 816; /* 2 * PI * R (R=130) */
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 1s linear;
-    filter: drop-shadow(0 0 10px var(--accent-glow));
-}
-
-.timer-text {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4.5rem;
-    font-weight: 700;
-    letter-spacing: -2px;
-}
-
-/* Timer Controls */
-.controls { display: flex; gap: 20px; }
-
-.btn-control {
-    width: 60px; height: 60px;
-    border-radius: 50%; border: none;
-    cursor: pointer; font-size: 1.5rem;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.2s, background 0.3s;
-}
-
-.btn-main { background: var(--accent); color: white; box-shadow: 0 5px 20px var(--accent-glow); }
-.btn-main:hover { transform: scale(1.1); background: #ff5252; }
-
-.btn-sec { background: rgba(255,255,255,0.1); color: var(--text-secondary); }
-.btn-sec:hover { background: rgba(255,255,255,0.2); color: white; }
-
-
-/* --- Right Side: Mixer --- */
-.mixer-section { display: flex; flex-direction: column; }
-
-.section-title {
-    font-size: 1.2rem; margin-bottom: 20px; color: var(--text-secondary); 
-    text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
-}
-
-.sounds-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
-    overflow-y: auto; max-height: 450px; padding-right: 5px;
-}
-
-/* Custom Scrollbar */
-.sounds-grid::-webkit-scrollbar { width: 5px; }
-.sounds-grid::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
-
-/* Sound Card */
-.sound-card {
-    background: rgba(255,255,255,0.05);
-    padding: 15px 20px;
-    border-radius: 16px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.sound-card:hover { background: rgba(255,255,255,0.08); }
-
-.sound-card.active {
-    border-color: var(--accent);
-    background: var(--card-active);
-}
-
-/* Pulse Animation for Active State */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
-}
-.sound-card.active .card-icon {
-    animation: pulse 2s infinite;
-    color: var(--accent);
-    opacity: 1;
-}
-
-.card-header {
-    display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;
-}
-
-.card-icon { font-size: 1.5rem; opacity: 0.6; transition: 0.3s; }
-.card-name { font-weight: 500; font-size: 0.95rem; }
-
-/* Volume Slider Styling */
-.volume-slider {
-    -webkit-appearance: none; width: 100%; height: 4px;
-    background: rgba(255,255,255,0.2); border-radius: 2px; outline: none;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none; appearance: none;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: #fff; cursor: pointer; transition: 0.2s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-.sound-card.active .volume-slider { background: rgba(255, 107, 107, 0.3); }
-.sound-card.active .volume-slider::-webkit-slider-thumb { background: var(--accent); }
-
-/* Mobile Response */
-@media (max-width: 850px) {
-    .app-container { grid-template-columns: 1fr; padding: 20px; }
-    .timer-section { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; margin-bottom: 30px; }
+.btn-timer:hover {
+    box-shadow: var(--shadow-main);
+    background-color: var(--bg-main);
 }
