@@ -22,13 +22,13 @@
     --text-second-color: #7a7165;
 
     --font-main: Newsreader;
-    --font-timer: Inter serif;
+    --font-timer: 'Inter', sans-serif;
 
     --border-radius-container: 36px;
     --border-radius-sound: 18px;
     --bt-mode: 9999px;
 
-    --shadow-main: 0 10px 30px -5px rgba(80, 60, 40, 0.06), 0 2px 6px rgba(80, 60, 40, 0.03);
+    --shadow-main: 5px 10px 30px -5px rgba(80, 60, 40, 0.06), 0 2px 6px rgba(80, 60, 40, 0.03);
     --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.04);
 
 }
@@ -73,8 +73,8 @@ header {
 
 /*---- Container -----  */
 .app-container {
-    width: 976px;
-    height: 829px;
+    width: 65%;
+    height: 90%;
     background-color: var(--bg-main);
     padding: 36px;
     border-radius: var(--border-radius-container);
@@ -95,15 +95,20 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 28px;
 }
 
+/* ---- Btn-mode ---- */
 .btn-timer-mode {
     background-color: var(--bg-second);
     border-radius: var(--bt-mode);
     display: flex;
     width: 90%;
     padding: 4px;
+    border: 1px solid rgba(222, 212, 195, 1);
 }
+
 
 .btn-timer {
     width: 110px;
@@ -115,7 +120,157 @@ header {
     border-radius: var(--bt-mode);
 }
 
-.btn-timer:hover {
+.btn-timer:active {
     box-shadow: var(--shadow-main);
     background-color: var(--bg-main);
+    color: black;
+}
+
+/* ----- Timer -----*/
+.timer {
+    width: 288px;
+    height: 288px;
+    background-image: url("/img/Clock\ Face\ Dial\ Container.svg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    font-family: var(--font-timer);
+}
+
+/* ----- Progress Bar -----*/
+.progress-bar {
+    --s: 200px;
+    --w: 4px;
+    --a: calc(((var(--p) * 360) / 100) * 1deg);
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background: conic-gradient(rgba(189, 95, 56, 1), rgba(189, 95, 56, 1) var(--a), rgba(189, 95, 56, 0.3) var(--a), rgba(189, 95, 56, 0.2));
+}
+
+.progress-value {
+    width: calc(var(--s) - 2 * var(--w));
+    height: calc(var(--s) - 2 * var(--w));
+    background: var(--bg-second);
+    border-radius: 50%;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+
+    h3 {
+        font-size: 13px;
+        font-weight: 700;
+        font-family: var(--font-timer);
+        color: rgba(116, 103, 87, 1);
+        letter-spacing: 1px;
+    }
+
+    .time {
+        font-size: 54px;
+        font-weight: 700;
+        font-family: var(--font-timer);
+        line-height: 1;
+        color: var(--text-color);
+    }
+}
+
+.progress-bar,
+.progress-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar-btns {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-start {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+    border-radius: var(--bt-mode);
+    border: none;
+    background-color: var(--terakota);
+    color: white;
+    font-size: 15px;
+    font-family: var(--font-timer);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-start:hover {
+    background-color: var(--terakota-hover);
+}
+
+.btn-start::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: currentColor;
+    -webkit-mask: url('../img/start.svg') no-repeat center / contain;
+    mask: url('../img/start.svg') no-repeat center / contain;
+}
+
+.btn-restart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(215, 204, 186, 0.7);
+    background-color: #FAF6EE;
+    cursor: pointer;
+}
+
+.btn-restart::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: #746654;
+    -webkit-mask: url('../img/restart-icon.svg') no-repeat center / contain;
+    mask: url('../img/restart-icon.svg') no-repeat center / contain;
+}
+
+
+
+/*---- Time variant btn ----- */
+
+.variant-btn-container {
+    width: 100%;
+    display: flex;
+    column-gap: 6px;
+    justify-content: center;
+}
+
+.variant-btn {
+    padding: 6px 14px;
+    border: 1px solid rgba(222, 212, 195, 1);
+    border-radius: var(--bt-mode);
+    background-color: var(--bg-second);
+    color: rgba(116, 103, 87, 1);
+    font-size: 12px;
+    text-align: center;
+    min-width: 70px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.variant-btn:active {
+    border-color: rgba(186, 105, 69, 1);
+    box-shadow: 0 0 0 1px rgba(186, 105, 69, 1), 0 0 0 3px rgba(234, 223, 208, 1);
+    color: rgba(139, 68, 34, 1);
+
+    font-weight: bold;
 }
