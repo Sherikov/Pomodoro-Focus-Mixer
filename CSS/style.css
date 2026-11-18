@@ -1,37 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('/CSS/variables.css');
 
-/* --- Variables & Reset --- */
-:root {
-    --bg-gradient-rain: linear-gradient(#4a5863, #36434c);
-    --bg-main: #F6F3EB;
-    --bg-second: #ede6d8;
-    --bg-fire: linear-gradient(#FDF4E7, #FBEAD2);
-
-    --card-main: rgba(239, 231, 216, 0.4);
-    --card-border: 1px solid rgba(215, 204, 186, 0.5);
-    --card-input: #F4EFE6;
-
-    --terakota: #C86237;
-    --terakota-hover: #B4532B;
-    --leaf: #4f6e47;
-    --rain: #4b6e82;
-    --fire: #e06d28;
-
-    --text-color: #2c2621;
-    --text-second-color: #7a7165;
-
-    --font-main: Newsreader;
-    --font-timer: 'Inter', sans-serif;
-
-    --border-radius-container: 36px;
-    --border-radius-sound: 18px;
-    --bt-mode: 9999px;
-
-    --shadow-main: 5px 10px 30px -5px rgba(80, 60, 40, 0.06), 0 2px 6px rgba(80, 60, 40, 0.03);
-    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.04);
-
-}
 
 * {
     box-sizing: border-box;
@@ -73,7 +43,7 @@ header {
 
 /*---- Container -----  */
 .app-container {
-    width: 65%;
+    width: auto;
     height: 90%;
     background-color: var(--bg-main);
     padding: 36px;
@@ -88,6 +58,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding-top: 8px;
+    column-gap: 32px;
 }
 
 /* ----- Timer section -----*/
@@ -106,7 +77,7 @@ header {
     display: flex;
     width: 90%;
     padding: 4px;
-    border: 1px solid rgba(222, 212, 195, 1);
+    border: var(--bt-timer-mode);
 }
 
 
@@ -114,7 +85,7 @@ header {
     width: 110px;
     height: 44px;
     font-size: 16px;
-    color: rgba(116, 103, 87, 1);
+    color: var(--bt-timer-txt-color);
     border: none;
     background-color: inherit;
     border-radius: var(--bt-mode);
@@ -164,7 +135,7 @@ header {
         font-size: 13px;
         font-weight: 700;
         font-family: var(--font-timer);
-        color: rgba(116, 103, 87, 1);
+        color: var(--bt-timer-txt-color);
         letter-spacing: 1px;
     }
 
@@ -194,7 +165,7 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 4px;
 
     padding: 10px 16px;
     border-radius: var(--bt-mode);
@@ -228,8 +199,8 @@ header {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1.5px solid rgba(215, 204, 186, 0.7);
-    background-color: #FAF6EE;
+    border: var(--bt-restart-border);
+    background-color: var(--bt-restart-bg);
     cursor: pointer;
 }
 
@@ -238,7 +209,7 @@ header {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background-color: #746654;
+    background-color: var(--bt-restart-bg-before);
     -webkit-mask: url('../img/restart-icon.svg') no-repeat center / contain;
     mask: url('../img/restart-icon.svg') no-repeat center / contain;
 }
@@ -256,10 +227,10 @@ header {
 
 .variant-btn {
     padding: 6px 14px;
-    border: 1px solid rgba(222, 212, 195, 1);
+    border: var(--variant-bt-border);
     border-radius: var(--bt-mode);
     background-color: var(--bg-second);
-    color: rgba(116, 103, 87, 1);
+    color: var(--variant-bt-color);
     font-size: 12px;
     text-align: center;
     min-width: 70px;
@@ -268,9 +239,35 @@ header {
 }
 
 .variant-btn:active {
-    border-color: rgba(186, 105, 69, 1);
-    box-shadow: 0 0 0 1px rgba(186, 105, 69, 1), 0 0 0 3px rgba(234, 223, 208, 1);
-    color: rgba(139, 68, 34, 1);
-
+    border-color: var(--variant-bt-border-active);
+    box-shadow: 0 0 0 1px var(--variant-bt-border-active), 0 0 0 3px rgba(234, 223, 208, 1);
+    color: var(--variant-bt-color-active);
     font-weight: bold;
+}
+
+
+/*---- Sound variants btn ----*/
+
+.sound-variants {
+    justify-content: start;
+    column-gap: 8px;
+}
+
+.variant-btn-reset {
+    background-color: inherit;
+    border: none;
+    padding: 6px 12px;
+    color: var(--variant-bt-color);
+}
+
+.variant-btn-reset:hover {
+
+    border-radius: var(--bt-mode);
+    background-color: var(--bg-second);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    border-color: var(--variant-bt-border-active);
+    box-shadow: 0 0 0 1px var(--variant-bt-border-active), 0 0 0 3px rgba(234, 223, 208, 1);
+    font-weight: bold;
+
 }

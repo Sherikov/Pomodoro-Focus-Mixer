@@ -1,0 +1,42 @@
+:root {
+    --bg-gradient-rain: linear-gradient(#4a5863, #36434c);
+    --bg-main: #F6F3EB;
+    --bg-second: #ede6d8;
+    --bg-fire: linear-gradient(#FDF4E7, #FBEAD2);
+
+    --card-main: rgba(239, 231, 216, 0.4);
+    --card-border: 1px solid rgba(215, 204, 186, 0.5);
+    --card-input: #F4EFE6;
+
+    --terakota: #C86237;
+    --terakota-hover: #B4532B;
+    --leaf: #4f6e47;
+    --rain: #4b6e82;
+    --fire: #e06d28;
+
+    --text-color: #2c2621;
+    --text-second-color: #7a7165;
+
+    --font-main: Newsreader;
+    --font-timer: 'Inter', sans-serif;
+
+    --border-radius-container: 36px;
+    --border-radius-sound: 18px;
+    --bt-mode: 9999px;
+
+    --shadow-main: 5px 10px 30px -5px rgba(80, 60, 40, 0.06), 0 2px 6px rgba(80, 60, 40, 0.03);
+    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    --bt-timer-mode: 1px solid rgba(222, 212, 195, 1);
+    --bt-timer-txt-color: rgba(116, 103, 87, 1);
+
+    --bt-restart-border: 1.5px solid rgba(215, 204, 186, 0.7);
+    --bt-restart-bg: #FAF6EE;
+    --bt-restart-bg-before:#746654;
+
+    --variant-bt-color:  rgba(116, 103, 87, 1);
+    --variant-bt-border:  1px solid rgba(222, 212, 195, 1);
+    --variant-bt-border-active: rgba(186, 105, 69, 1);
+    --variant-bt-color-active:rgba(139, 68, 34, 1);
+
+}
