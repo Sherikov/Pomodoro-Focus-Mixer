@@ -43,7 +43,7 @@ header {
 
 /*---- Container -----  */
 .app-container {
-    width: auto;
+    width: fit-content;
     height: 90%;
     background-color: var(--bg-main);
     padding: 36px;
@@ -91,7 +91,7 @@ header {
     border-radius: var(--bt-mode);
 }
 
-.btn-timer:active {
+.btn-timer.active {
     box-shadow: var(--shadow-main);
     background-color: var(--bg-main);
     color: black;
@@ -101,7 +101,7 @@ header {
 .timer {
     width: 288px;
     height: 288px;
-    background-image: url("/img/Clock\ Face\ Dial\ Container.svg");
+    background-image: url("/img/clock-face-dial-container.svg");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -238,7 +238,7 @@ header {
     transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 
-.variant-btn:active {
+.variant-btn.active {
     border-color: var(--variant-bt-border-active);
     box-shadow: 0 0 0 1px var(--variant-bt-border-active), 0 0 0 3px rgba(234, 223, 208, 1);
     color: var(--variant-bt-color-active);
@@ -247,6 +247,13 @@ header {
 
 
 /*---- Sound variants btn ----*/
+
+.sound-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
 
 .sound-variants {
     justify-content: start;
@@ -270,4 +277,107 @@ header {
     box-shadow: 0 0 0 1px var(--variant-bt-border-active), 0 0 0 3px rgba(234, 223, 208, 1);
     font-weight: bold;
 
+}
+
+
+.sounds-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    overflow-y: auto;
+    max-height: 450px;
+    padding: 10px;
+}
+
+/* Custom Scrollbar */
+.sounds-grid::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sounds-grid::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+/* Sound Card */
+.sound-card {
+    background: var(--bg-second);
+    padding: 16px;
+    border-radius: 16px;
+    border: var(--variant-bt-border);
+    box-shadow: var(--shadow-main);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+}
+
+
+.sound-card.active {
+    box-shadow: 0px 0px 10px 0px rgb(194 49 98);
+}
+
+
+
+.card-header {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+
+.icon-container {
+    background-color: rgb(243, 229, 206);
+    border: 2px solid rgba(217, 205, 184, 1);
+    border-radius: 12px;
+    width: 2.3em;
+    height: 2.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--icon-color);
+}
+
+.card-icon {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: var(--icon-color, #5F5444);
+    transition: 0.3s;
+}
+
+.card-icon--emoji {
+    background-color: transparent;
+    font-size: 1.5rem;
+    width: auto;
+    height: auto;
+}
+
+.card-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Volume Slider Styling */
+.volume-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to left, #ecd1a6, #E2DBD0);
+    border-radius: var(--bt-mode);
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(213, 204, 192, 1);
 }
