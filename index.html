@@ -19,21 +19,23 @@
         <!-- Timer section-->
         <div class="timer-section">
           <!-- Timer section buttons-->
+
           <div class="btn-timer-mode">
-            <button class="btn-timer">Focus</button>
-            <button class="btn-timer">Short</button>
-            <button class="btn-timer">Long</button>
+            <button class="btn-timer active">Focus</button>
+            <button class="btn-timer">Short break</button>
+            <button class="btn-timer">Long break</button>
           </div>
 
           <!-- Timer -->
           <div class="timer">
             <!-- Progress Bar-->
+
             <div
               class="progress-bar"
               role="progressbar"
-              aria-valuenow="75"
+              aria-valuenow="0"
               aria-valumax="100"
-              style="--p: 75"
+              style="--p: 0"
             >
               <!-- Progress Value-->
               <div class="progress-value">
@@ -75,6 +77,5 @@
     </main>
 
     <script src="./JS/script.js" defer type="module"></script>
-    
   </body>
 </html>

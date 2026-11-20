@@ -2,6 +2,7 @@ import { soundsData } from "./db.js";
 
 // --- 2. Setup Variables & DOM Elements ---
 const audioPlayers = {};
+
 const progressBar = document.querySelector(".progress-bar");
 
 // Helper to update ring progress (CSS conic-gradient via --p variable)
@@ -14,6 +15,7 @@ function setProgress(percent) {
 let timerInterval = null;
 let totalTime = 25 * 60;
 let timeLeft = totalTime;
+
 let isRunning = false;
 
 const display = document.querySelector(".time");
@@ -29,14 +31,23 @@ const variantBtns = document.querySelectorAll(
 // Mode configurations
 const modes = {
   Focus: { time: 25 },
-  Short: { time: 5 },
-  Long: { time: 15 },
+  "Short break": { time: 5 },
+  "Long break": { time: 15 },
 };
 
 function updateDisplay() {
-  const m = Math.floor(timeLeft / 60);
-  const s = timeLeft % 60;
-  display.innerText = `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+  const hasHours = totalTime >= 3600;
+  if (hasHours) {
+    const h = Math.floor(timeLeft / 3600);
+    const m = Math.floor((timeLeft % 3600) / 60);
+    const s = timeLeft % 60;
+    display.innerText = `${h < 10 ? "0" : ""}${h}:${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+    display.style.fontSize = "36px";
+  } else {
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    display.innerText = `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+  }
 
   // Calculate percentage for ring
   const percent = (timeLeft / totalTime) * 100;
@@ -51,11 +62,13 @@ function toggleTimer() {
     // Pause
     clearInterval(timerInterval);
     isRunning = false;
+    toggleBtn.classList.remove("active");
     toggleBtnContent.innerText = "Start";
   } else {
     // Start
     isRunning = true;
     toggleBtnContent.innerText = "Pause";
+    toggleBtn.classList.add("active");
 
     timerInterval = setInterval(() => {
       if (timeLeft > 0) {
@@ -65,6 +78,7 @@ function toggleTimer() {
         // Time's up
         clearInterval(timerInterval);
         isRunning = false;
+        toggleBtn.classList.remove("active");
         toggleBtnContent.innerText = "Start";
         alert("Focus Session Complete!");
       }
@@ -75,6 +89,7 @@ function toggleTimer() {
 function resetTimer() {
   clearInterval(timerInterval);
   isRunning = false;
+  toggleBtn.classList.remove("active");
   timeLeft = totalTime;
   toggleBtnContent.innerText = "Start";
   updateDisplay();

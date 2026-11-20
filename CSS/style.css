@@ -78,6 +78,7 @@ header {
     width: 90%;
     padding: 4px;
     border: var(--bt-timer-mode);
+    gap: 5px;
 }
 
 
@@ -89,10 +90,13 @@ header {
     border: none;
     background-color: inherit;
     border-radius: var(--bt-mode);
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    text-align: center;
 }
 
 .btn-timer.active {
-    box-shadow: var(--shadow-main);
+    box-shadow: var(--shadow-main), 1px 1px 5px rgb(1 1 1 / 50%);
     background-color: var(--bg-main);
     color: black;
 }
@@ -109,9 +113,11 @@ header {
     align-items: center;
     padding: 24px;
     font-family: var(--font-timer);
+
 }
 
 /* ----- Progress Bar -----*/
+
 .progress-bar {
     --s: 200px;
     --w: 4px;
@@ -121,6 +127,7 @@ header {
     border-radius: 50%;
     background: conic-gradient(rgba(189, 95, 56, 1), rgba(189, 95, 56, 1) var(--a), rgba(189, 95, 56, 0.3) var(--a), rgba(189, 95, 56, 0.2));
 }
+
 
 .progress-value {
     width: calc(var(--s) - 2 * var(--w));
@@ -137,6 +144,7 @@ header {
         font-family: var(--font-timer);
         color: var(--bt-timer-txt-color);
         letter-spacing: 1px;
+
     }
 
     .time {
@@ -145,6 +153,7 @@ header {
         font-family: var(--font-timer);
         line-height: 1;
         color: var(--text-color);
+
     }
 }
 
@@ -166,8 +175,8 @@ header {
     align-items: center;
     justify-content: center;
     gap: 4px;
-
     padding: 10px 16px;
+    min-width: 90px;
     border-radius: var(--bt-mode);
     border: none;
     background-color: var(--terakota);
@@ -182,6 +191,10 @@ header {
     background-color: var(--terakota-hover);
 }
 
+.btn-start.active {
+    background-color: var(--bt-start-active);
+}
+
 .btn-start::before {
     content: '';
     display: inline-block;
@@ -192,16 +205,22 @@ header {
     mask: url('../img/start.svg') no-repeat center / contain;
 }
 
+.btn-start.active::before {
+    -webkit-mask-image: url('../img/carbon--pause-filled.svg');
+    mask-image: url('../img/carbon--pause-filled.svg');
+}
+
 .btn-restart {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     border: var(--bt-restart-border);
     background-color: var(--bt-restart-bg);
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-restart::before {
@@ -212,8 +231,17 @@ header {
     background-color: var(--bt-restart-bg-before);
     -webkit-mask: url('../img/restart-icon.svg') no-repeat center / contain;
     mask: url('../img/restart-icon.svg') no-repeat center / contain;
+    transition: transform 0.5s ease, background-color 0.3s;
 }
 
+.btn-restart:hover {
+    background-color: var(--bt-start-active);
+}
+
+.btn-restart:hover::before {
+    transform: rotate(-360deg);
+    background-color: white;
+}
 
 
 /*---- Time variant btn ----- */

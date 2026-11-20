@@ -30,6 +30,7 @@
     --bt-timer-mode: 1px solid rgba(222, 212, 195, 1);
     --bt-timer-txt-color: rgba(116, 103, 87, 1);
 
+    --bt-start-active: #746654;
     --bt-restart-border: 1.5px solid rgba(215, 204, 186, 0.7);
     --bt-restart-bg: #FAF6EE;
     --bt-restart-bg-before:#746654;
