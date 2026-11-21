@@ -273,6 +273,224 @@ header {
     font-weight: bold;
 }
 
+/*----- Modal window -----*/
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+
+    background: var(--bg-main);
+    padding: 24px;
+    border-radius: 24px;
+    max-width: 420px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.modal-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-second);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--bt-timer-txt-color, #746654);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+.modal-close:hover {
+    background-color: #d8c7a6;
+    color: var(--text-color, #2c2621);
+}
+
+.modal-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    align-items: center;
+}
+
+
+.header-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--card-input, #f4efe6);
+    border: 2px solid rgba(215, 204, 186, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bt-timer-txt-color, #746654);
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+
+.header-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--icon-color);
+
+}
+
+.modal-title {
+    grid-column: 2;
+    grid-row: 1;
+    font-family: var(--font-main, 'Newsreader', serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-color, #2c2621);
+}
+
+
+.modal-subtitle {
+    grid-column: 2;
+    grid-row: 2;
+    font-family: var(--font-timer, 'Inter', sans-serif);
+    font-size: 13px;
+    color: var(--text-second-color, #7a7165);
+}
+
+.input-container {
+    width: 100%;
+    height: 64px;
+    background-color: #FAF7F0;
+    border: 1px solid rgba(215, 204, 186, 0.7);
+    border-radius: 20px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.input-btn {
+    width: 48px;
+    height: 46px;
+    background-color: #EBE3D5;
+    color: var(--bt-timer-txt-color, #746654);
+    border: none;
+    border-radius: 14px;
+    font-family: var(--font-timer, 'Inter', sans-serif);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, transform 0.1s active;
+}
+
+.input-btn:hover {
+    background-color: #dfd4c3;
+}
+
+.input-btn:active {
+    transform: scale(0.96);
+}
+
+
+.input-value-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+}
+
+
+.modal-input {
+    border: none;
+    background: transparent;
+    font-family: var(--font-timer, 'Inter', sans-serif);
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-color, #2c2621);
+    width: 58px;
+    text-align: right;
+    padding: 0;
+    outline: none;
+    -moz-appearance: textfield;
+
+}
+
+
+.modal-input::-webkit-outer-spin-button,
+.modal-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.input-unit {
+    font-family: var(--font-timer, 'Inter', sans-serif);
+    font-size: 14px;
+    font-weight: 600;
+    color: #9C9181;
+    cursor: pointer;
+}
+
+.modal-btns {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 10px 16px;
+    min-width: 90px;
+    border-radius: var(--bt-mode);
+    border: none;
+    background-color: #EBE3D5;
+    color: var(--bt-timer-txt-color, #746654);
+    font-size: 15px;
+    font-family: var(--font-timer);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s active;
+}
+
+.accept-btn:hover {
+    background-color: var(--terakota-hover);
+}
+
+.accept-btn {
+    background-color: var(--terakota);
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #dfd4c3;
+}
+
+.modal-btn:active {
+    transform: scale(0.96);
+}
+
 
 /*---- Sound variants btn ----*/
 

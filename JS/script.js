@@ -27,6 +27,13 @@ const modeBtns = document.querySelectorAll(".btn-timer");
 const variantBtns = document.querySelectorAll(
   ".timer-section > .variant-btn-container .variant-btn",
 );
+const closeModal = document.querySelector("#closeModal");
+const modal = document.querySelector("#modal");
+const increaseBtn = document.querySelector(".increase");
+const decreaseBtn = document.querySelector(".decrease");
+const modalInput = document.querySelector("#modal-input");
+const acceptBtn = document.querySelector(".accept-btn");
+const cancelBtn = document.querySelector(".cancel-btn");
 
 // Mode configurations
 const modes = {
@@ -125,7 +132,8 @@ variantBtns.forEach((btn) => {
 
     const text = btn.textContent.trim();
     if (text === "Own time") {
-      const input = prompt("Enter time in minutes:");
+      openModal();
+      const input = modalInput.value;
       const mins = parseInt(input);
       if (!isNaN(mins) && mins > 0) {
         totalTime = mins * 60;
@@ -140,6 +148,43 @@ variantBtns.forEach((btn) => {
     }
   });
 });
+
+// Modal window
+function close() {
+  modal.classList.add("hidden");
+}
+
+function openModal() {
+  modal.classList.remove("hidden");
+}
+
+closeModal.addEventListener("click", close);
+
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    close();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+    close();
+  }
+});
+
+increaseBtn.addEventListener("click", () => {
+  let val = parseInt(modalInput.value) || 25;
+  modalInput.value = val + 5;
+});
+
+decreaseBtn.addEventListener("click", () => {
+  let val = parseInt(modalInput.value) || 25;
+  if (val > 5) {
+    modalInput.value = val - 5;
+  }
+});
+
+cancelBtn.addEventListener("click", close);
 
 // --- 4. Mixer Logic & Audio Handling ---
 const grid = document.getElementById("sounds-grid");

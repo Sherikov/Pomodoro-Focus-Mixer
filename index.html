@@ -74,6 +74,52 @@
           <div class="sounds-grid" id="sounds-grid"></div>
         </div>
       </section>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="header-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 14" />
+              </svg>
+            </div>
+
+            <h2 class="modal-title">Own time</h2>
+            <p class="modal-subtitle">
+              Specify the duration of the focus session in minutes
+            </p>
+
+            <button id="closeModal" class="modal-close">&times;</button>
+          </div>
+          <div class="input-container">
+            <button type="button" class="input-btn decrease">-5</button>
+
+            <div class="input-value-wrapper">
+              <input
+                id="modal-input"
+                class="modal-input"
+                type="number"
+                value="25"
+                min="5"
+                step="5"
+              />
+              <label for="modal-input" class="input-unit">min</label>
+            </div>
+
+            <button type="button" class="input-btn increase">+5</button>
+          </div>
+          <div class="modal-btns">
+            <button class="modal-btn cancel-btn">Cancel</button>
+            <button class="modal-btn accept-btn">Accept</button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="./JS/script.js" defer type="module"></script>
